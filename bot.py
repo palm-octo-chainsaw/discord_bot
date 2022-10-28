@@ -19,6 +19,9 @@ kukata = [
 	'Извинете, вие ли духате за без пари?'
 ]
 
+def rand_welcome():
+	return random_person[randrange(0,len(random_person))]
+
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
@@ -30,14 +33,19 @@ bot = commands.Bot(command_prefix='$', intents=intents)
 async def on_member_join(member):
 	if member.name == 'ninoo5':
 		await member.send(f'Welcome fatso/shishi !!!')
+		print(f'Message send to {member.name}')
 	elif member.name == 'LizzardRider':
 		await member.send(f'Welcome lazare!')
+		print(f'Message send to {member.name}')
 	elif member.name == 'Torbjørn':
 		await member.send(f'Welcome Bonjorny!')
+		print(f'Message send to {member.name}')
 	elif member.name == 'Onatie':
 		await member.send(f'Само няма ми се депресираш...Капиш?')
+		print(f'Message send to {member.name}')
 	else:
-		await member.send(f'Welcome travaler!')
+		await member.send(f'{rand_welcome()}')
+		print(f'Message send to {member.name}')
 
 @bot.event
 async def on_raw_member_remove(ctx):
