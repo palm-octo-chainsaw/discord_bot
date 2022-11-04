@@ -1,0 +1,5 @@
+TTS.mp3
+**.pyo
+**.pyc
+**/__pycache__/
+**/ffmpeg/**
