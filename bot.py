@@ -83,4 +83,14 @@ async def vremeto(ctx):
 		await asyncio.sleep(randrange(1,2))
 	await ctx.send(f"It's {data['data'][0]['weather']['description']} bro и глей кво става {data['data'][0]['temp']}°C баси майката")
 
-bot.run(TOKEN)
+async def load_ext():
+	for f in os.listdir('./cogs'):
+		if f.endswith('.py'):
+			await bot.load_extension(f'cogs.{f[:-3]}')
+
+async def main():
+	async with bot:
+		await load_ext()
+		await bot.start(TOKEN)
+
+asyncio.run(main())
